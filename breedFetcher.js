@@ -12,7 +12,7 @@ const url = `https://api.thecatapi.com/v1/breeds/search?q=${BreedName}`;
 request(url, function (error, response, body) {
   const data = JSON.parse(body);
   if (!data[0]) {
-    console.log('breed not found');
+    console.log('a breed name is required');
   } else {
     console.log(data[0].description);
   }
