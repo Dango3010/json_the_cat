@@ -9,21 +9,11 @@ const request = require('request');
 //get the description from API server based on breed name:
 const BreedName = process.argv[2];
 const url = `https://api.thecatapi.com/v1/breeds/search?q=${BreedName}`;
+// const url = `https://api.dddd.com/v1/flsfs/search?q=${BreedName}`; //breaking domain name to test the error feature
 request(url, function (error, response, body) {
   if (error) return console.log('error message:', error);
   const data = JSON.parse(body);
   if (!data[0]) return console.log("a breed name is required or not found");
   //when the breed name is empty or not found
-
   return console.log(data[0].description);
 });
-
-// const FindBreadByName = function(name, callback) {
-//   const url   = `https://api.thecatapi.com/v1/breeds/search?q=${name}`;
-//   request (url, (error, response, body) => {
-//     const data = JSON.parse(body);
-//     let errorMes = error;
-//     let description = data[0].description;
-//     return callback(errorMes, description);
-//   })
-// };
