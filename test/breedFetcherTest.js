@@ -1,7 +1,9 @@
 const { fetchBreedDescription } = require('../breedFetcher');
-const assert = require('chai');
+//pls extract this inside data from the object
+// const fetchBreedDescription = reqire('../breedFetcher').fetchBreedDescription;
+const assert = require ('chai').assert; //an object with all features of chai
 
-describe(fetchBreedDescription, () => {
+describe('testing fetchBreedDescription', () => {
   it('return a string description for a valid breed, via callback', (done) => {
     fetchBreedDescription('Siberian', (error, desc) => {
       assert.equal(error, null);
@@ -11,10 +13,11 @@ describe(fetchBreedDescription, () => {
     });
   });
   it('return an error message when a non-existent/invalid breed is entered', (done) => {
-    fetchBreedDescription('Siberian', (error, desc) => {
-      assert.equal(error, errorExp);
+    fetchBreedDescription('', (error, desc) => {
       const errorExp = "a breed name is required or not found";
+      assert.equal(error, errorExp);
       assert.equal(desc, null);
+      done();
     });
   });
 });

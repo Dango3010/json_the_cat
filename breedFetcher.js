@@ -10,8 +10,8 @@ const request = require('request');
 const fetchBreedDescription = function (breedName, callback) {
   const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
   // const url = `https://api.ddfdfdf.com/v1/breeds/search?q=${breedName}`; // used to test the error feature
-  let MesError = '';
-  let desc = '';
+  let MesError = null;
+  let desc = null;
   request(url, function (error, response, body) {
     if (error) {
       MesError = error;
